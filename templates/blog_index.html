@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Blog — {{ site.name }}{% endblock %}
+
+{% block content %}
+<section style="border-top: none;">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-eyebrow">Writing</span>
+      <h2>All posts</h2>
+    </div>
+    <div class="blog-grid">
+      {% for post in blog_posts %}
+      <a class="blog-card" href="blog/{{ post.slug }}.html">
+        <span class="blog-date">{{ post.date }}</span>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.excerpt }}</p>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

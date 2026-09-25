@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}{{ site.name }} — {{ site.title }}{% endblock %}</title>
+  <meta name="description" content="Portfolio of {{ site.name }} — {{ site.tagline }}" />
+  <link rel="stylesheet" href="{{ base_path }}css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="{{ base_path }}index.html#top" class="nav-brand">{{ site.name }}</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="{{ base_path }}index.html#about">About</a></li>
+        <li><a href="{{ base_path }}index.html#skills">Skills</a></li>
+        <li><a href="{{ base_path }}index.html#projects">Projects</a></li>
+        <li><a href="{{ base_path }}index.html#experience">Experience</a></li>
+        <li><a href="{{ base_path }}blog.html">Blog</a></li>
+        <li><a href="{{ base_path }}index.html#contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">☀️</button>
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="current-year"></span> {{ site.name }}. Built with Python + Jinja2 (static site generator).</p>
+    </div>
+  </footer>
+
+  <script src="{{ base_path }}js/main.js"></script>
+</body>
+</html>

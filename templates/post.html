@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} — {{ site.name }}{% endblock %}
+
+{% block content %}
+<section style="border-top: none;">
+  <div class="container" style="max-width: 720px;">
+    <span class="blog-date">{{ post.date }}</span>
+    <h1 style="margin-top: 0.5rem;">{{ post.title }}</h1>
+    {% for paragraph in post.body %}
+    <p>{{ paragraph }}</p>
+    {% endfor %}
+    <p><a href="../blog.html">&larr; Back to all posts</a></p>
+  </div>
+</section>
+{% endblock %}

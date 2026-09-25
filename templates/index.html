@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- ===================== HERO / ABOUT ===================== -->
+<section id="about" style="border-top: none;">
+  <div class="container hero" id="top">
+    <span class="hero-eyebrow">Available for new opportunities</span>
+    <h1>Hi, I'm {{ site.name }}</h1>
+    <p class="subtitle">{{ site.tagline }}</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#projects">View Projects</a>
+      <a class="btn btn-secondary" href="assets/resume/resume.pdf" download>Download Resume</a>
+    </div>
+    <div class="social-links">
+      <a href="{{ site.github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
+      <a href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+      <a href="mailto:{{ site.email }}" aria-label="Email">Email</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-heading">
+          <span class="section-eyebrow">About Me</span>
+          <h2>A bit about my background</h2>
+        </div>
+        {% for paragraph in about.paragraphs %}
+        <p>{{ paragraph }}</p>
+        {% endfor %}
+      </div>
+      <div class="about-facts">
+        {% for fact in about.facts %}
+        <div class="fact-card">
+          <div class="fact-value">{{ fact.value }}</div>
+          <div class="fact-label">{{ fact.label }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SKILLS ===================== -->
+<section id="skills">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-eyebrow">Skills</span>
+      <h2>What I work with</h2>
+    </div>
+    <div class="skills-grid">
+      {% for group in skills %}
+      <div class="skill-card">
+        <h3>{{ group.category }}</h3>
+        <ul class="tag-list">
+          {% for tag in group.tags %}
+          <li class="tag">{{ tag }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROJECTS ===================== -->
+<section id="projects">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-eyebrow">Projects</span>
+      <h2>Things I've built</h2>
+    </div>
+    <div class="projects-grid">
+      {% for project in projects %}
+      <article class="project-card">
+        <h3>{{ project.name }}</h3>
+        <p>{{ project.description }}</p>
+        <div class="project-links">
+          <a href="{{ project.demo_url }}" target="_blank" rel="noopener noreferrer">Live Demo</a>
+          <a href="{{ project.source_url }}" target="_blank" rel="noopener noreferrer">Source Code</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EXPERIENCE ===================== -->
+<section id="experience">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-eyebrow">Experience</span>
+      <h2>Where I've worked</h2>
+    </div>
+    <div class="timeline">
+      {% for job in experience %}
+      <div class="timeline-item">
+        <div class="timeline-date">{{ job.date_range }}</div>
+        <div class="timeline-body">
+          <h3>{{ job.role }}</h3>
+          <span class="role-org">{{ job.org }}</span>
+          <ul>
+            {% for bullet in job.bullets %}
+            <li>{{ bullet }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BLOG TEASER ===================== -->
+<section id="blog-teaser">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-eyebrow">Writing</span>
+      <h2>Latest from the blog</h2>
+    </div>
+    <div class="blog-grid">
+      {% for post in blog_posts %}
+      <a class="blog-card" href="blog/{{ post.slug }}.html">
+        <span class="blog-date">{{ post.date }}</span>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.excerpt }}</p>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-eyebrow">Contact</span>
+      <h2>Let's talk</h2>
+    </div>
+    <div class="contact-grid">
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="form-row">
+          <label for="contact-name">Name</label>
+          <input type="text" id="contact-name" name="name" required />
+        </div>
+        <div class="form-row">
+          <label for="contact-email">Email</label>
+          <input type="email" id="contact-email" name="email" required />
+        </div>
+        <div class="form-row">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" rows="5" required></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Send Message</button>
+        <p class="form-status" id="form-status" role="status"></p>
+      </form>
+      <div class="about-text">
+        <p>Prefer email? Reach me directly at <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+        <p>You can also find me on <a href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn</a> and <a href="{{ site.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
